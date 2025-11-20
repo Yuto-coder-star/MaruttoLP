@@ -1,0 +1,633 @@
+@charset "UTF-8";
+
+/* ==========================================================================
+   1. Reset & Base Styles
+   ========================================================================== */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Noto Sans JP', "Helvetica Neue", Arial, sans-serif;
+    line-height: 1.6;
+    color: #333;
+    background-color: #fff;
+    -webkit-font-smoothing: antialiased;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+    transition: all 0.3s ease;
+}
+
+ul {
+    list-style: none;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    vertical-align: bottom;
+}
+
+/* ==========================================================================
+   2. Variables (Color & Settings)
+   ========================================================================== */
+:root {
+    /* まるっと様のブランドカラーをイメージした配色 */
+    --primary-color: #004ea2;  /* 信頼感のある濃い青 */
+    --accent-color: #00a1e9;   /* 明るいシアンブルー */
+    --text-color: #333333;
+    --bg-gray: #f4f8fa;        /* 薄い青みがかったグレー */
+    --white: #ffffff;
+    --cta-orange: #ff9800;     /* コンバージョン用オレンジ */
+    --cta-hover: #f57c00;
+}
+
+/* ==========================================================================
+   3. Utility Classes
+   ========================================================================== */
+.container {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.section-padding {
+    padding: 80px 0;
+}
+
+.bg-gray {
+    background-color: var(--bg-gray);
+}
+
+.sp-only {
+    display: none;
+}
+
+/* セクションタイトル共通スタイル */
+.section-title {
+    text-align: center;
+    font-size: 2rem;
+    margin-bottom: 50px;
+    font-weight: 700;
+    color: var(--primary-color);
+    position: relative;
+}
+
+.section-title::after {
+    content: '';
+    display: block;
+    width: 60px;
+    height: 4px;
+    background-color: var(--accent-color);
+    margin: 20px auto 0;
+    border-radius: 2px;
+}
+
+/* ==========================================================================
+   4. Header
+   ========================================================================== */
+.header {
+    background: var(--white);
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    height: 70px;
+    display: flex;
+    align-items: center;
+}
+
+.header-container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-weight: 700;
+    font-size: 1.2rem;
+    line-height: 1.2;
+    color: var(--primary-color);
+}
+
+.logo-sub {
+    font-size: 0.75rem;
+    color: #666;
+    font-weight: normal;
+}
+
+.nav {
+    display: flex;
+    align-items: center;
+}
+
+.nav a {
+    margin-left: 25px;
+    font-weight: 500;
+    color: var(--text-color);
+    font-size: 0.95rem;
+}
+
+.nav a:hover {
+    color: var(--accent-color);
+}
+
+.btn-header {
+    background-color: var(--primary-color);
+    color: var(--white) !important;
+    padding: 10px 20px;
+    border-radius: 4px;
+    font-weight: bold;
+}
+
+.btn-header:hover {
+    background-color: var(--accent-color);
+    color: var(--white);
+}
+
+/* ==========================================================================
+   5. Hero Section (Top) & 3D Animation
+   ========================================================================== */
+.hero {
+    /* 爽やかなグラデーション背景 */
+    background: linear-gradient(135deg, #eef7ff 0%, #ffffff 100%);
+    padding: 140px 20px 100px; /* ヘッダー分(70px)を考慮して上部を空ける */
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.hero-content {
+    max-width: 800px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 2;
+}
+
+.hero h1 {
+    font-size: 2.4rem;
+    margin-bottom: 10px;
+    line-height: 1.4;
+    color: var(--text-color);
+}
+
+.hero-sub {
+    display: block;
+    font-size: 1.1rem;
+    color: var(--primary-color);
+    font-weight: bold;
+    margin-bottom: 10px;
+    letter-spacing: 0.05em;
+}
+
+/* --- 3D Logo Animation Start --- */
+.logo-3d-container {
+    perspective: 1000px; /* 奥行きの設定 */
+    width: 180px;        /* ロゴの表示サイズ */
+    height: 180px;
+    margin: 30px auto 40px; /* 上下の余白 */
+    position: relative;
+}
+
+.logo-3d {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    /* 3D回転アニメーションの適用 */
+    animation: rotate3D 12s infinite linear; 
+    transform-style: preserve-3d;
+    filter: drop-shadow(0 10px 15px rgba(0, 78, 162, 0.2)); /* 影をつけて浮遊感を出す */
+}
+
+/* 回転のアニメーション定義 */
+@keyframes rotate3D {
+    0% {
+        transform: rotateY(0deg);
+    }
+    100% {
+        transform: rotateY(360deg);
+    }
+}
+/* --- 3D Logo Animation End --- */
+
+.hero-text {
+    font-size: 1.1rem;
+    margin-bottom: 40px;
+    color: #444;
+}
+
+.hero-btn-area {
+    margin-top: 30px;
+}
+
+.btn-primary {
+    display: inline-block;
+    background-color: var(--cta-orange);
+    color: var(--white);
+    padding: 18px 45px;
+    border-radius: 50px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    box-shadow: 0 4px 15px rgba(255, 152, 0, 0.4);
+    transition: transform 0.2s, box-shadow 0.2s, background-color 0.2s;
+}
+
+.btn-primary:hover {
+    background-color: var(--cta-hover);
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(255, 152, 0, 0.5);
+}
+
+/* ==========================================================================
+   6. Intro Section (課題)
+   ========================================================================== */
+.intro-grid {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    margin-bottom: 50px;
+}
+
+.intro-item {
+    background: var(--white);
+    padding: 40px 30px;
+    border-radius: 12px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+    width: 32%;
+    text-align: center;
+    transition: transform 0.3s;
+}
+
+.intro-item:hover {
+    transform: translateY(-5px);
+}
+
+.intro-item .icon {
+    font-size: 3.5rem;
+    margin-bottom: 20px;
+    display: inline-block;
+}
+
+.intro-item h3 {
+    margin-bottom: 15px;
+    color: var(--primary-color);
+    font-size: 1.3rem;
+}
+
+.intro-message {
+    text-align: center;
+    font-size: 1.3rem;
+    font-weight: bold;
+    line-height: 1.8;
+}
+
+.highlight {
+    color: var(--accent-color);
+    font-size: 1.6rem;
+    background: linear-gradient(transparent 70%, #e0f2ff 70%);
+    padding: 0 5px;
+}
+
+/* ==========================================================================
+   7. Merit Section (メリット)
+   ========================================================================== */
+.merit-grid {
+    display: flex;
+    justify-content: space-between;
+    gap: 30px;
+}
+
+.merit-card {
+    background: var(--white);
+    padding: 40px 30px;
+    border-radius: 12px;
+    width: 32%;
+    position: relative;
+    border-top: 5px solid var(--accent-color);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.03);
+}
+
+.step-num {
+    font-size: 3.5rem;
+    color: #f0f0f0;
+    font-weight: 900;
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    line-height: 1;
+    z-index: 0;
+}
+
+.merit-card h3 {
+    margin-bottom: 20px;
+    font-size: 1.3rem;
+    color: var(--primary-color);
+    position: relative;
+    z-index: 1;
+}
+
+.merit-card p {
+    position: relative;
+    z-index: 1;
+    font-size: 0.95rem;
+}
+
+/* ==========================================================================
+   8. Target Section (対象)
+   ========================================================================== */
+.target-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px;
+    max-width: 850px;
+    margin: 0 auto;
+}
+
+.target-list li {
+    background: #eaf6fd;
+    color: var(--primary-color);
+    padding: 12px 25px;
+    border-radius: 50px;
+    font-weight: bold;
+    border: 1px solid #cce7f7;
+}
+
+/* ==========================================================================
+   9. Flow Section (流れ)
+   ========================================================================== */
+.flow-steps {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.flow-step {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 25px;
+    background: var(--white);
+    padding: 25px;
+    border-radius: 10px;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.03);
+    position: relative;
+}
+
+/* 矢印の装飾（最後の要素以外） */
+.flow-step:not(:last-child)::after {
+    content: '▼';
+    position: absolute;
+    bottom: -25px;
+    left: 50%;
+    transform: translateX(-50%);
+    color: #ccc;
+    font-size: 14px;
+}
+
+.flow-head {
+    background: var(--primary-color);
+    color: var(--white);
+    padding: 12px 0;
+    width: 100px;
+    text-align: center;
+    font-weight: bold;
+    border-radius: 6px;
+    margin-right: 25px;
+    flex-shrink: 0;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+
+.flow-body {
+    flex-grow: 1;
+}
+
+.flow-body h4 {
+    font-size: 1.2rem;
+    margin-bottom: 8px;
+    color: var(--text-color);
+}
+
+.flow-body p {
+    font-size: 0.95rem;
+    color: #555;
+}
+
+/* ==========================================================================
+   10. FAQ Section
+   ========================================================================== */
+.faq-list {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.faq-item {
+    margin-bottom: 20px;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 20px;
+}
+
+.question {
+    font-weight: 700;
+    font-size: 1.1rem;
+    color: var(--primary-color);
+    margin-bottom: 12px;
+    display: flex;
+    align-items: baseline;
+}
+
+.question::before {
+    content: 'Q.';
+    font-size: 1.3rem;
+    margin-right: 10px;
+    color: var(--accent-color);
+}
+
+.answer {
+    padding-left: 32px;
+    font-size: 1rem;
+    line-height: 1.6;
+}
+
+/* ==========================================================================
+   11. Contact Form
+   ========================================================================== */
+.contact-form {
+    max-width: 650px;
+    margin: 40px auto 0;
+    background: var(--bg-gray);
+    padding: 50px;
+    border-radius: 15px;
+    border: 1px solid #eee;
+}
+
+.form-group {
+    margin-bottom: 25px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 10px;
+    font-weight: bold;
+    color: var(--text-color);
+}
+
+.form-group label span.required {
+    color: red;
+    font-size: 0.8rem;
+    margin-left: 5px;
+    background: #ffebee;
+    padding: 2px 6px;
+    border-radius: 4px;
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 15px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    font-size: 1rem;
+    transition: border-color 0.3s;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: var(--accent-color);
+    box-shadow: 0 0 0 3px rgba(0, 161, 233, 0.1);
+}
+
+.btn-submit {
+    width: 100%;
+    background-color: var(--primary-color);
+    color: var(--white);
+    padding: 18px;
+    border: none;
+    border-radius: 6px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s;
+    margin-top: 10px;
+}
+
+.btn-submit:hover {
+    background-color: var(--accent-color);
+    transform: translateY(-2px);
+}
+
+/* ==========================================================================
+   12. Footer
+   ========================================================================== */
+.footer {
+    background-color: #222;
+    color: #ddd;
+    padding: 50px 0;
+    text-align: center;
+    font-size: 0.9rem;
+}
+
+.footer-info p {
+    margin-bottom: 12px;
+    letter-spacing: 0.05em;
+}
+
+.copyright {
+    margin-top: 30px;
+    font-size: 0.8rem;
+    color: #888;
+}
+
+/* ==========================================================================
+   13. Responsive Styles (Mobile)
+   ========================================================================== */
+@media (max-width: 768px) {
+    .header {
+        height: 60px;
+    }
+
+    .header-container {
+        padding: 0 15px;
+    }
+
+    /* スマホではナビゲーションを簡易非表示（必要に応じてハンバーガーメニュー化） */
+    .nav {
+        display: none; 
+    }
+
+    .section-padding {
+        padding: 60px 0;
+    }
+
+    .section-title {
+        font-size: 1.6rem;
+        margin-bottom: 30px;
+    }
+
+    /* Hero Mobile */
+    .hero {
+        padding: 100px 20px 60px;
+    }
+
+    .hero h1 {
+        font-size: 1.6rem;
+    }
+
+    .logo-3d-container {
+        width: 120px;
+        height: 120px;
+        margin: 20px auto 30px;
+    }
+
+    .sp-only {
+        display: inline; /* 改行などを有効化 */
+    }
+
+    /* Grids -> Stack */
+    .intro-grid,
+    .merit-grid {
+        flex-direction: column;
+    }
+
+    .intro-item,
+    .merit-card {
+        width: 100%;
+        margin-bottom: 20px;
+    }
+
+    /* Flow Mobile */
+    .flow-step {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .flow-head {
+        margin: 0 auto 15px;
+        width: 100%;
+    }
+
+    .flow-step:not(:last-child)::after {
+        display: none; /* スマホでは矢印非表示にするか調整 */
+    }
+
+    /* Form Mobile */
+    .contact-form {
+        padding: 25px 20px;
+    }
+    
+    .btn-primary {
+        width: 100%;
+        padding: 15px 20px;
+        font-size: 1rem;
+    }
+}
