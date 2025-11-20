@@ -114,17 +114,58 @@ img {
     align-items: center;
 }
 
-.logo {
+/* Header */
+/* ... (header, header-container の既存CSSはそのまま) ... */
+
+.logo-area {
+    display: flex; /* ロゴとテキストを横並びにする */
+    align-items: center; /* 垂直方向中央揃え */
+    gap: 10px; /* ロゴとテキストの間隔 */
+}
+
+.header-logo {
+    height: 40px; /* ロゴの高さ調整 */
+    width: auto;
+    object-fit: contain;
+}
+
+.logo-text {
+    line-height: 1.2;
+}
+
+.logo-main {
     font-weight: 700;
     font-size: 1.2rem;
-    line-height: 1.2;
     color: var(--primary-color);
+    display: block; /* 改行させるため */
 }
 
 .logo-sub {
-    font-size: 0.75rem;
+    font-size: 0.75rem; /* 少し小さめに */
     color: #666;
     font-weight: normal;
+    display: block; /* 改行させるため */
+}
+
+/* ... (nav, btn-header の既存CSSはそのまま) ... */
+
+/* Responsive (Mobile) の修正も忘れずに */
+@media (max-width: 768px) {
+    /* ... 既存のモバイルCSS ... */
+
+    .header-logo {
+        height: 30px; /* スマホでのロゴの高さ */
+    }
+
+    .logo-main {
+        font-size: 1rem; /* スマホでのメインロゴテキストサイズ */
+    }
+
+    .logo-sub {
+        font-size: 0.7rem; /* スマホでのサブテキストサイズ */
+    }
+
+    /* ... その他のモバイルCSS ... */
 }
 
 .nav {
