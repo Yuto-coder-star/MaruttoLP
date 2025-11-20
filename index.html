@@ -170,22 +170,22 @@
                 担当者より1営業日以内に折り返しご連絡いたします。
             </p>
             
-            <form class="contact-form" onsubmit="event.preventDefault(); alert('デモ送信完了しました');">
+            <form class="contact-form" action="https://formspree.io/f/xkgyqzgp" method="POST">
                 <div class="form-group">
                     <label>会社名・屋号</label>
-                    <input type="text" required placeholder="例：株式会社〇〇">
+                    <input type="text" name="company" required placeholder="例：株式会社〇〇">
                 </div>
                 <div class="form-group">
                     <label>お名前</label>
-                    <input type="text" required placeholder="例：山田 太郎">
+                    <input type="text" name="name" required placeholder="例：山田 太郎">
                 </div>
                 <div class="form-group">
                     <label>メールアドレス</label>
-                    <input type="email" required placeholder="例：info@example.com">
+                    <input type="email" name="email" required placeholder="例：info@example.com">
                 </div>
                 <div class="form-group">
                     <label>お問い合わせ内容</label>
-                    <textarea rows="5" placeholder="制度の詳細を知りたい、紹介したい案件がある、など"></textarea>
+                    <textarea name="message" rows="5" placeholder="制度の詳細を知りたい、紹介したい案件がある、など"></textarea>
                 </div>
                 <button type="submit" class="btn-submit">送信する</button>
             </form>
