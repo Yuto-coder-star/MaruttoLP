@@ -115,56 +115,61 @@ img {
 }
 
 /* Header */
-/* ... (header, header-container の既存CSSはそのまま) ... */
-
+/* --- Header Logo Area Adjustment Start --- */
 .logo-area {
-    display: flex; /* ロゴとテキストを横並びにする */
-    align-items: center; /* 垂直方向中央揃え */
-    gap: 10px; /* ロゴとテキストの間隔 */
+    display: flex;
+    align-items: center; /* 垂直方向の中央揃え */
+    gap: 15px; /* ロゴと文字の間隔を広げてゆとりを持たせる */
 }
 
 .header-logo {
-    height: 40px; /* ロゴの高さ調整 */
+    height: 46px; /* ロゴを少し大きくして存在感を出す（PC時） */
     width: auto;
     object-fit: contain;
 }
 
 .logo-text {
-    line-height: 1.2;
+    display: flex;
+    flex-direction: column; /* 縦並びに設定 */
+    justify-content: center;
+    line-height: 1; /* デフォルトの行間をリセット */
 }
 
 .logo-main {
+    font-size: 1.35rem; /* 社名を少し大きく強調 */
     font-weight: 700;
-    font-size: 1.2rem;
     color: var(--primary-color);
-    display: block; /* 改行させるため */
+    margin-bottom: 5px; /* サブテキストとの隙間を微調整 */
+    letter-spacing: 0.05em; /* 文字間を少し空けて読みやすく */
 }
 
 .logo-sub {
-    font-size: 0.75rem; /* 少し小さめに */
-    color: #666;
-    font-weight: normal;
-    display: block; /* 改行させるため */
+    font-size: 0.75rem; /* 小さく控えめに */
+    color: #666; /* グレーで落ち着かせる */
+    font-weight: 500;
+    letter-spacing: 0.1em; /* パラパラしない程度に文字間を空ける */
 }
 
-/* ... (nav, btn-header の既存CSSはそのまま) ... */
-
-/* Responsive (Mobile) の修正も忘れずに */
+/* Mobile Responsive */
 @media (max-width: 768px) {
-    /* ... 既存のモバイルCSS ... */
+    .logo-area {
+        gap: 10px; /* スマホでは間隔を少し狭める */
+    }
 
     .header-logo {
-        height: 30px; /* スマホでのロゴの高さ */
+        height: 34px; /* スマホでのロゴサイズ */
     }
 
     .logo-main {
-        font-size: 1rem; /* スマホでのメインロゴテキストサイズ */
+        font-size: 1rem; /* スマホでも改行されないサイズ感 */
     }
 
     .logo-sub {
-        font-size: 0.7rem; /* スマホでのサブテキストサイズ */
+        font-size: 0.65rem;
+        margin-top: 2px;
     }
-
+}
+/* --- Header Logo Area Adjustment End --- */
     /* ... その他のモバイルCSS ... */
 }
 
